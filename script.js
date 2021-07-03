@@ -95,7 +95,7 @@ function showBooks() {
     readChange.textContent = 'Read';
 
     // Here it checks if the read prop in the opject is true or not
-    // to decide whither to show in the book card that it's read or unread.
+    // to decide whether to show in the book card that it's read or unread.
     if (myLibrary[i].read) {
       read.textContent = 'Read? Yes😃';
     } else {
