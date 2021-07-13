@@ -19,5 +19,5 @@
 * Learned how to **create a custom checkbox**
 * Learned how to **create a modal**
 * Learned how to **save data to** `localStorage`
-* Deepened knowledge of **DOM manipulation**, **HTML structure**, **CSS styling subtleties** and **JS functionality** in general
+* Deepened my knowledge of **DOM manipulation**, **HTML structure**, **CSS styling subtleties** and **JS functionality** in general
 * Had lots of fun with styling! 🎨
