@@ -18,20 +18,41 @@
         <!-- Modal content -->
         <div class="modal-content">
           <div class="form-container">
-            <div class="form">
+            <form class="form" id="form" novalidate>
               <span class="close">&times;</span><br />
-              <label for="bookTitle">Book Title:</label><br />
-              <input type="text" id="bookTitle" name="bookTitle" /><br />
-              <label for="bookAuthor">Book Author:</label><br />
-              <input type="text" id="bookAuthor" name="bookAuthor" /><br />
-              <label for="bookPages">Book Pages:</label> <br />
-              <input type="number" id="bookPages" name="bookPages" /><br />
+              <label for="bookTitle">Book Title: </label>
+              <span class="error" id="titleError" aria-live="polite"></span
+              ><br />
+              <input
+                type="text"
+                id="bookTitle"
+                name="bookTitle"
+                required
+              /><br />
+              <label for="bookAuthor">Book Author: </label>
+              <span class="error" id="authorError" aria-live="polite"></span
+              ><br />
+              <input
+                type="text"
+                id="bookAuthor"
+                name="bookAuthor"
+                required
+              /><br />
+              <label for="bookPages">Book Pages: </label
+              ><span class="error" id="pagesError" aria-live="polite"></span
+              ><br />
+              <input
+                type="number"
+                id="bookPages"
+                name="bookPages"
+                required
+              /><br />
               <div class="read-check">
                 <label for="bookRead">Read?</label> <br />
                 <input type="checkbox" id="bookRead" name="bookRead" /><br />
               </div>
-              <button id="addBtn">Add Book</button>
-            </div>
+              <button type="button" id="addBtn">Add Book</button>
+            </form>
           </div>
         </div>
       </div>

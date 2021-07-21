@@ -53,17 +53,32 @@ const read = document.querySelector('#bookRead');
 //then it calls the 2 functions empty() to empty the books section to be filled with the newly updated myLibrary array using
 // the showBooks() function.
 addBookBtn.addEventListener('click', () => {
-  addBookToLibrary(
-    new Book(title.value, author.value, pages.value, read.checked)
-  );
-  showBooks();
-  title.value = '';
-  author.value = '';
-  pages.value = '';
-  read.checked = '';
-  modal.style.display = 'none';
-  empty();
-  showBooks();
+  if (form.checkValidity()) {
+    addBookToLibrary(
+      new Book(title.value, author.value, pages.value, read.checked)
+    );
+    showBooks();
+    title.value = '';
+    author.value = '';
+    pages.value = '';
+    read.checked = '';
+    modal.style.display = 'none';
+    empty();
+    showBooks();
+  } else {
+    if (title.validity.valueMissing) {
+      titleError.innerText = 'You need to enter a book title.';
+      titleError.className = 'error active';
+    }
+    if (author.validity.valueMissing) {
+      authorError.innerText = 'You need to enter a book author.';
+      authorError.className = 'error active';
+    }
+    if (pages.validity.valueMissing) {
+      pagesError.innerText = 'You need to enter number of pages.';
+      pagesError.className = 'error active';
+    }
+  }
 });
 
 // This function emptys the cards section to be ready to display the newly updated array
@@ -149,3 +164,60 @@ function showBooks() {
 }
 
 showBooks();
+
+// FORM VALIDATION
+
+const titleError = document.querySelector('#titleError');
+const authorError = document.querySelector('#authorError');
+const pagesError = document.querySelector('#pagesError');
+
+title.addEventListener('input', () => {
+  if (title.validity.valid) {
+    // In case there is an error message visible, if the field
+    // is valid, we remove the error message.
+    titleError.innerText = ''; // Reset the content of the message
+    titleError.className = 'error'; // Reset the visual state of the message
+  } else {
+    // If there is still an error, show the correct error
+    if (title.validity.valueMissing) {
+      // If the field is empty,
+      // display the following error message.
+      titleError.innerText = 'You need to enter a book title.';
+      titleError.className = 'error active';
+    }
+  }
+});
+
+author.addEventListener('input', () => {
+  if (author.validity.valid) {
+    // In case there is an error message visible, if the field
+    // is valid, we remove the error message.
+    authorError.innerText = ''; // Reset the content of the message
+    authorError.className = 'error'; // Reset the visual state of the message
+  } else {
+    // If there is still an error, show the correct error
+    if (author.validity.valueMissing) {
+      // If the field is empty,
+      // display the following error message.
+      authorError.innerText = 'You need to enter a book author.';
+      authorError.className = 'error active';
+    }
+  }
+});
+
+pages.addEventListener('input', () => {
+  if (pages.validity.valid) {
+    // In case there is an error message visible, if the field
+    // is valid, we remove the error message.
+    pagesError.innerText = ''; // Reset the content of the message
+    pagesError.className = 'error'; // Reset the visual state of the message
+  } else {
+    // If there is still an error, show the correct error
+    if (pages.validity.valueMissing) {
+      // If the field is empty,
+      // display the following error message.
+      pagesError.innerText = 'You need to enter number of pages.';
+      pagesError.className = 'error active';
+    }
+  }
+});
